@@ -20,20 +20,28 @@ public class Implementation {
             head = temp;
             tail = temp;
         }else{
-            tail.prev = temp;
-            temp.next = tail;
+            tail.next = temp;
+            temp.prev = tail;
             tail = temp;
         }
+    }
+
+    void print(){
+        Node curr = head;
+        while(curr != null){
+            System.out.print(curr.data + " ");
+            curr = curr.next;
+        }
+        System.out.println();
     }
 
     public static void main(String[] args) {
         Implementation dll = new Implementation();
         dll.Add(20);
         dll.Add(34);
+        dll.Add(388);
 
-        System.out.println(dll.head.data);
-        System.out.println(dll.tail.data);
-
+       dll.print();
 
     }
 }
