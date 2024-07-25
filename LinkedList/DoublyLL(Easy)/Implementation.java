@@ -46,6 +46,23 @@ public class Implementation {
         }
     }
 
+    void deleteLastNode() {
+        if (head == null) {
+            return; // List is empty
+        }
+
+        if (head.next == null) {
+            head = null; // Only one node in the list
+            return;
+        }
+        Node curr = head;
+
+        while (curr.next != null) {
+            curr = curr.next;
+        }
+        curr.prev.next = null;
+    }
+
     void deleteAtIndexNode(int index) {
 
         if (head == null || index < 0) {
@@ -67,7 +84,7 @@ public class Implementation {
             }
             // Change next only if the node to be deleted is NOT the last node
             if (curr.next != null) {
-               
+
                 curr.next.prev = curr.prev;
             }
 
