@@ -1,9 +1,9 @@
-class Node{
+class Node {
     int data;
     Node next;
     Node prev;
 
-    Node(int data){
+    Node(int data) {
         this.data = data;
         next = null;
         prev = null;
@@ -14,21 +14,74 @@ public class Implementation {
     Node head;
     Node tail;
 
-    void Add(int elm){
+    void AddatLast(int elm) {
         Node temp = new Node(elm);
-        if(head == null){
+        if (head == null) {
             head = temp;
             tail = temp;
-        }else{
+        } else {
             tail.next = temp;
             temp.prev = tail;
             tail = temp;
         }
     }
 
-    void print(){
+    void addAtFirst(int elm) {
+        Node new_node = new Node(elm);
+
+        new_node.next = head;
+        new_node.prev = null;
+    }
+
+    void deleteFirstNode() {
+        if (head == null) {
+            System.out.println("The list is empty");
+            return;
+        }
+        if (head.next == null) {
+            head = null;
+        } else {
+            head = head.next;
+            head.prev = null;
+        }
+    }
+
+    void deleteAtIndexNode(int index) {
+
+        if (head == null || index < 0) {
+            return;
+        }
+
         Node curr = head;
-        while(curr != null){
+        int count = 0;
+
+        while (curr != null && count < index) {
+            curr = curr.next;
+            count++;
+        }
+
+        if (curr != null) {
+            if (curr == head) {
+                head = curr.next;
+                head.prev = null;
+            }
+            // Change next only if the node to be deleted is NOT the last node
+            if (curr.next != null) {
+               
+                curr.next.prev = curr.prev;
+            }
+
+            // Change prev only if the node to be deleted is NOT the first node
+            if (curr.prev != null) {
+
+                curr.prev.next = curr.next;
+            }
+        }
+    }
+
+    void print() {
+        Node curr = head;
+        while (curr != null) {
             System.out.print(curr.data + " ");
             curr = curr.next;
         }
@@ -37,11 +90,21 @@ public class Implementation {
 
     public static void main(String[] args) {
         Implementation dll = new Implementation();
-        dll.Add(20);
-        dll.Add(34);
-        dll.Add(388);
+        dll.AddatLast(20);
+        dll.AddatLast(34);
+        dll.AddatLast(388);
+        dll.AddatLast(89);
+        dll.AddatLast(90);
 
-       dll.print();
+        System.out.println("Original list:");
+        dll.print();
+
+        // dll.deleteFirstNode();
+        dll.deleteAtIndexNode(1);
+
+        System.out.println("modified list:");
+
+        dll.print();
 
     }
 }
