@@ -21,10 +21,10 @@ public class Union {
         }
 
         return union;
-    } 
+    }
 
     // Optimal Approch
-    static ArrayList<Integer> UnionOfArray(int[] arr1, int[] arr2, int n, int m) {
+    /*static ArrayList<Integer> UnionOfArray(int[] arr1, int[] arr2, int n, int m) {
         ArrayList<Integer> union = new ArrayList<>();
 
         int i = 0;
@@ -43,7 +43,7 @@ public class Union {
             }
         }
         return union;
-    }
+    } */
 
     public static void main(String[] args) {
         int n = 10, m = 7;

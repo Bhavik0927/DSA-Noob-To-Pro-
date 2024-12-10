@@ -11,6 +11,7 @@ class Node {
 public class IMple {
 
     Node head;
+    Node tail;
 
     void add(int data) {
         Node newNoded = new Node(data);
@@ -47,10 +48,59 @@ public class IMple {
         }
     }
 
+    void deleteAtFirst(Node head ){
+        head = head.next;
+    }
+
+    void deleteLastNode(){
+        if(head == null){ return;}
+
+        if(head.next == null){
+            head = null;
+            tail = null;
+            return;
+        }
+
+        Node curr = head;
+        while(curr.next != tail){
+            curr = curr.next;
+        }
+        curr.next = null;
+        tail = curr;
+    }
+
+    void deleteNode(int idx){
+        if(idx == 0){
+            head = head.next;
+        }else{
+            Node curr = head;
+            
+            for(int i = 0; i< idx - 1; i++){
+                curr = curr.next;
+            }
+            curr.next = curr.next.next;
+        }
+
+    }
+    
+    int KthfromLast(int k){
+        Node s = head;
+        Node f = head;
+
+        for(int i = 0; i<k; i++){
+            f = f.next;
+        }
+
+        while(f != tail){
+            s = s.next;
+            f = f.next;
+        }
+        return s.data;
+    }
     void printData() {
         Node currNode = head;
         while (currNode != null) {
-            System.out.println(currNode.data);
+            System.out.print (currNode.data + " ");
             currNode = currNode.next;
         }
     }
@@ -62,6 +112,10 @@ public class IMple {
         ll.insertAtFirst(40);
         ll.insertAtMid(2,879);
         ll.add(25);
+        ll.deleteNode(2);
+        ll.deleteLastNode();
+
+        ll.KthfromLast(1);
         
         ll.printData();
     }

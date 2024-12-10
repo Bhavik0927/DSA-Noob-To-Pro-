@@ -28,7 +28,7 @@ public class Sort {
     }*/
 
     //Optimal Solution
-    static void sortArray(ArrayList<Integer> arr, int n){
+    /* static void sortArray(ArrayList<Integer> arr, int n){
         int low = 0, mid = 0, high = n-1;
 
         while(mid <= high){
@@ -49,12 +49,46 @@ public class Sort {
                 high--;
             }
         }
+    } */
+
+
+    static void sortArray(int[] arr){
+        int low = 0;
+        int mid = arr.length -1;
+        int high = 0;
+
+        while(mid <= high){
+            switch (arr[mid]) {
+                case 0:
+                    {int temp = arr[low];
+                    arr[low] = arr[mid];
+                    arr[mid] = temp;
+                    mid++;
+                    low++;
+                    break;
+                }
+                case 1:{
+                    mid++;
+                    break;
+                }
+                case 2:{
+                    int temp = arr[mid];
+                    arr[mid] = arr[high];
+                    arr[high] = temp;
+                    high--;
+                }
+            
+                default:
+                    break;
+            }
+        }
     }
 
 
     public static void main(String[] args) {
         int n = 6;
-        ArrayList<Integer> arr = new ArrayList<>(Arrays.asList(new Integer[] { 0, 2, 1, 2, 0, 1 }));
+        int[] arr = {0, 2, 1, 2, 0, 1 };
+        // ArrayList<Integer> arr = new ArrayList<>(Arrays.asList(new Integer[] { 0, 2, 1, 2, 0, 1 }));
         sortArray(arr, n);
         System.out.println("After sorting:");
         for (int i = 0; i < n; i++) {
