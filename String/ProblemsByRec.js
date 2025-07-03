@@ -73,6 +73,7 @@ console.log(ans)
 
 // Bubble Sort
 
+/* 
 const bubble_Sort = (arr,n) =>{
     if(n === 0 || n===1){
         return arr;
@@ -92,5 +93,127 @@ const bubble_Sort = (arr,n) =>{
 const arr = [38,27,43,3,9,82,10];
 
 const ans = bubble_Sort(arr, arr.length-1);
+
+console.log(ans);
+
+*/
+
+
+// Merge Sort
+
+/* 
+const Merge = (arr,start,mid,end) =>{
+    let i = start; 
+    let j = mid+1;
+
+    let temp = [];
+
+    while(i <= mid && j <= end){
+        
+        if(arr[i] <= arr[j]){
+            temp.push(arr[i]);
+            i++;
+        }else{
+            temp.push(arr[j]);
+            j++;
+        }
+    }
+
+    while(i <= mid) {
+        temp.push(arr[i]);
+        i++;
+    }
+
+    while(j <= end){
+        temp.push(arr[j]);
+        j++;
+    }
+
+
+    for(let idx = 0; idx < temp.length; idx++){
+        arr[start + idx] = temp[idx];
+    }
+}
+
+const Merge_sort = (arr,start,end) =>{
+
+    if(start >= end) return;
+
+    let mid = Math.floor((start + end) /2);
+
+    Merge_sort(arr,start,mid);
+
+    Merge_sort(arr,mid+1,end);
+
+    Merge(arr,start,mid,end);
+
+}
+
+
+const arr = [5,2,9,1,6,3];
+
+ Merge_sort(arr,0,arr.length-1);
+
+console.log(arr);
+
+
+*/
+
+
+// Count Inversion of count;
+
+const Merge = (arr,start,mid,end) =>{
+    let i = start;
+    let j = mid+1;
+    let temp = [];
+    let inversionCount = 0;
+
+    while(i <= mid && j <= end){
+
+        if(arr[i] <= arr[j]){
+            temp.push(arr[i]);
+            i++;
+        }else{
+            temp.push(arr[j]);
+            j++;
+            inversionCount += (mid - i + 1);
+        }
+    }
+
+    while(i <= mid){
+        temp.push(arr[i]);
+        i++;
+    }
+
+    while(j <= end){
+        temp.push(arr[j]);
+        j++;
+    }
+
+    for(let idx = 0; idx < temp.length; idx++){
+        arr[idx+ start] = temp[idx];
+    }
+
+    return inversionCount;
+}
+
+const MergeSort = (arr,start,end) =>{
+    if(start >= end ) return 0;
+
+    let mid = Math.floor(start + (end-start)/2);
+
+    let leftInversion = MergeSort(arr,start,mid);
+
+    let rightIversion = MergeSort(arr,mid+1,end);
+
+    let invertionCount = Merge(arr,start,mid,end);
+
+    return leftInversion + rightIversion + invertionCount;
+}
+
+
+let arr = [6,3,5,2,7];
+
+let ans = MergeSort(arr,0, arr.length-1);
 
 console.log(ans);
