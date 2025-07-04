@@ -68,7 +68,7 @@ const Power = (a, b) => {
 const ans = Power(4, 6);
 console.log(ans)
 
-*/ 
+*/
 
 
 // Bubble Sort
@@ -161,7 +161,7 @@ console.log(arr);
 
 
 // Count Inversion of count;
-
+/*
 const Merge = (arr,start,mid,end) =>{
     let i = start;
     let j = mid+1;
@@ -217,3 +217,48 @@ let arr = [6,3,5,2,7];
 let ans = MergeSort(arr,0, arr.length-1);
 
 console.log(ans);
+
+*/
+
+
+// Quick Sort
+
+const Partion = (arr, st, end) => {
+    let idx = st - 1;
+    let pivot = arr[end];
+    let temp;
+    for (let i = st; i < end; i++) {
+        if (arr[i] <= pivot) {
+            idx++;
+            temp = arr[i];
+            arr[i] = arr[idx];
+            arr[idx] = temp;
+        }
+    }
+
+    idx++;
+    temp = arr[idx];
+    arr[idx] = arr[end];
+    arr[end] = temp;
+
+    return idx;
+}
+
+const quick_sort = (arr, st, end) => {
+
+    if (st >= end) return ;
+
+    let pivotIndex = Partion(arr, st, end);
+
+    quick_sort(arr, st, pivotIndex - 1);
+
+    quick_sort(arr, pivotIndex + 1, end);
+
+}
+
+let arr = [55, 12, 6, 74, 13, 13];
+
+quick_sort(arr, 0, arr.length - 1);
+
+console.log(arr);
+
