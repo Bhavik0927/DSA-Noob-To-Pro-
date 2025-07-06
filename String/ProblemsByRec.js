@@ -223,6 +223,7 @@ console.log(ans);
 
 // Quick Sort
 
+/*
 const Partion = (arr, st, end) => {
     let idx = st - 1;
     let pivot = arr[end];
@@ -256,9 +257,51 @@ const quick_sort = (arr, st, end) => {
 
 }
 
-let arr = [55, 12, 6, 74, 13, 13];
+let arr = [55, 12, 6, 74, 13, 3];
 
 quick_sort(arr, 0, arr.length - 1);
 
 console.log(arr);
+*/
 
+
+// Permutation Of String 
+
+
+const swap = (arr, a, b) => {
+    let temp = arr[a];
+    arr[a] = arr[b];
+    arr[b] = temp;
+}
+
+const Get_Permutation = (chars, index, result) => {
+    if (index === chars.length) {
+        result.push(chars.join(''));
+        return;
+    }
+
+    for (let i = index; i < chars.length; i++) {
+
+        swap(chars, i, index);
+
+        Get_Permutation(chars, index + 1, result);
+
+        swap(chars, i, index);
+
+    }
+}
+
+const Permutation_String = (str) => {
+    let result = [];
+
+    if (str.length === 0) return result;
+
+    const chars = str.split('');
+
+    Get_Permutation(chars, 0, result);
+
+    return result;
+}
+
+
+console.log(Permutation_String("abc"));
