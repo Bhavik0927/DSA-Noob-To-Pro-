@@ -89,6 +89,21 @@ const Pure_LinkedList = () => {
         temp.next = null;
     }
 
+    const reverseLinkedList = () =>{
+        let prev = null;
+        let curr = head;
+        let next = null;
+
+        while(curr){
+            next = curr.next;
+            curr.next = prev;
+            prev = curr;
+            curr = next;
+        }
+
+        head= prev;
+    }
+
     const print = () => {
         let out = "", temp = head;
         while (temp) { out += temp.data + " -> "; temp = temp.next; }
@@ -101,7 +116,8 @@ const Pure_LinkedList = () => {
         insertAtMiddle,
         print,
         deleteAtFirst,
-        deleteLastNode
+        deleteLastNode,
+        reverseLinkedList
     }
 }
 
