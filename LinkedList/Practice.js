@@ -121,7 +121,28 @@ const Pure_LinkedList = () => {
 
     }
 
-    
+    // Count the loop
+    const Count_loop = () =>{
+        let slow = head;
+        let fast = head;
+
+        while(fast != null & fast.next != null){
+            slow = slow.next;
+            fast = fast.next.next;
+
+            if(slow === fast){
+                let count = 1;
+                let temp = slow.next;
+
+                while(temp != slow){
+                    count++;
+                    temp = temp.next;
+                }
+
+                return count;
+            }
+        }
+    }
 
     const print = () => {
         let out = "", temp = head;
@@ -137,7 +158,8 @@ const Pure_LinkedList = () => {
         deleteAtFirst,
         deleteLastNode,
         reverseLinkedList,
-        findLoop
+        findLoop,
+        Count_loop
     }
 }
 
