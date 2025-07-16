@@ -104,6 +104,25 @@ const Pure_LinkedList = () => {
         head= prev;
     }
 
+
+    // Detech a loop in true or false
+    const findLoop = () =>{
+        let slow = head;
+        let fast = head;
+
+        while(fast != null && fast.next != null){
+            slow = slow.next;
+            fast = fast.next.next;
+
+            if(slow === fast) return true;
+        }
+
+        return false;
+
+    }
+
+    
+
     const print = () => {
         let out = "", temp = head;
         while (temp) { out += temp.data + " -> "; temp = temp.next; }
@@ -117,7 +136,8 @@ const Pure_LinkedList = () => {
         print,
         deleteAtFirst,
         deleteLastNode,
-        reverseLinkedList
+        reverseLinkedList,
+        findLoop
     }
 }
 
