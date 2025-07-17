@@ -176,7 +176,18 @@ const Pure_LinkedList = () => {
         return zeroHead.next;
     }
 
+    // Intersection of Two linked list
+    const Intersection_List = (headA,headB) =>{
+        let a = headA;
+        let b = headB;
 
+        while(a !== b){
+            a = a === null ? headB : a.next;
+            b = b === null ? headA : b.next;
+        }
+
+        return a;
+    }
 
     const print = () => {
         let out = "", temp = head;
@@ -194,7 +205,8 @@ const Pure_LinkedList = () => {
         reverseLinkedList,
         findLoop,
         Count_loop,
-        Sort_By_Links
+        Sort_By_Links,
+        Intersection_List
     }
 }
 
