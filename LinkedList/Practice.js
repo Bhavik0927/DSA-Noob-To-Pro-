@@ -144,6 +144,40 @@ const Pure_LinkedList = () => {
         }
     }
 
+
+    // Sort 0s, 1s, 2s By Changing Links
+
+    const Sort_By_Links = (head) =>{
+        if(!head || head.next ) return null;
+
+        let zeroHead = Node(-1), zeroTail = zeroHead;
+        let oneHead = Node(-1), oneTail = oneHead;
+        let twoHead = Node (-1), twoTail = twoHead;
+
+        while(curr){
+            if(curr.data === 0){
+                zeroTail.next = curr;
+                zeroTail = zeroTail.next
+            }else if(curr.data === 1){
+                oneTail.next = curr;
+                oneTail = oneTail.next
+            }else{
+                twoTail.next = curr;
+                twoTail = twoTail.next;
+            }
+
+            curr = curr.next;
+        }
+
+        zeroTail.next = oneHead.next ? oneHead.next : twoHead.next;
+        oneTail.next = twoHead.next;
+        twoTail.next = null;
+
+        return zeroHead.next;
+    }
+
+
+
     const print = () => {
         let out = "", temp = head;
         while (temp) { out += temp.data + " -> "; temp = temp.next; }
@@ -159,7 +193,8 @@ const Pure_LinkedList = () => {
         deleteLastNode,
         reverseLinkedList,
         findLoop,
-        Count_loop
+        Count_loop,
+        Sort_By_Links
     }
 }
 
