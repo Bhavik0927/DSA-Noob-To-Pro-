@@ -23,10 +23,21 @@ const BuildTree = (arr) => {
     return node;
 }
 
+const InOrderTraversal = (root) =>{
+    if(root === null) return [];
+
+    return [
+        ...InOrderTraversal(root.left),
+        root.data,
+        ...InOrderTraversal(root.right)
+    ]
+}
 
 const arr = [1, 2, -1, -1, 3, -1, -1];
 
 const root = BuildTree(arr);
+
+console.log(InOrderTraversal(root));
 
 console.log(root);
 
