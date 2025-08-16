@@ -43,12 +43,24 @@ const preOrderTraversal = (root) =>{
     ]
 }
 
+const postOrderTraversal = (root) =>{
+    if(root === null) return [];
+
+    return [
+        ...postOrderTraversal(root.left),
+        ...postOrderTraversal(root.right),
+        root.data
+    ]
+}
+
+
 const arr = [1, 2, -1, -1, 3, -1, -1];
 
 const root = BuildTree(arr);
 
 console.log(InOrderTraversal(root));
 console.log(preOrderTraversal(root));
+console.log(postOrderTraversal(root));
 
 console.log(root);
 
