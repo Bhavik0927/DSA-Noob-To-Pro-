@@ -69,6 +69,29 @@ const PreOrderTraversal = (root) =>{
     return result;
 }
 
+//Using Two Stack
+const postOrderTraversal = (root) =>{
+    if(root != null) return [];
+
+    let stack1 = [root];
+    let stack2 = [];
+    let result = [];
+
+    while(stack1.length > 0){
+        let node = stack1.pop();
+        stack2.push(node);
+
+        if(node.left)  {stack1.push(node.left)};
+        if(node.right) {stack1.push(node.right)};
+
+    }
+
+    while(stack2.length > 0){
+        result.push(stack2.pop().val);
+    }
+
+    return result;
+}
 
 const arr = [1, 2, -1, -1, 3, -1, -1];
 
