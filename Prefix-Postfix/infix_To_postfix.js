@@ -19,14 +19,19 @@ const Convert_Infix_To_Postfix = (exp) => {
         } else if (char === '(') {
             stack.push(char);
         } else if (char === ')') {
+
             while (stack.length && stack[stack.length - 1] !== '(') {
                 result += stack.pop();
             }
+
             stack.pop();
+
         } else {
+
             while (stack.length && getPredence(stack[stack.length - 1] >= getPredence(char))) {
                 result += stack.pop();
             }
+            
             stack.push(char);
         }
 

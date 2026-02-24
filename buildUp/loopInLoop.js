@@ -12,3 +12,5 @@
 
 const arr = [0,0,3,3,5,6];
 console.log(removeDuplicates(arr)); */
+
+

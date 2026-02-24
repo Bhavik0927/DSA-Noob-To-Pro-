@@ -16,18 +16,21 @@ const next_permutation = (arr) => {
     // Now we got an i;
 
 
-    // second find j which is greater than i 
-    let j = n - 1;
-    while (arr[j] <= arr[i]) {
-        j--;
+    // second find j which is greater than i
+    if (i > 0) {
+
+
+        let j = n - 1;
+        while (arr[j] <= arr[i]) {
+            j--;
+        }
+
+        // Now we got an j so we swap them
+        swap(arr, i, j);
+
     }
-
-    // Now we got an j so we swap them
-    swap(arr, i, j);
-
-
     // after swapping we have rest of the array is unsorted after an i index;
-    
+
     let left = i + 1, right = n - 1;
     while (left < right) {
         swap(arr, left, right);
@@ -40,7 +43,9 @@ const next_permutation = (arr) => {
 
 
 // let arr = [1,2,3,6,5,4];
-let arr = [3, 1, 4, 2];
+// let arr = [3, 1, 4, 2];
+// let arr = [3, 2, 1];
+ let arr = [1, 2, 3];
 
 next_permutation(arr);
 
